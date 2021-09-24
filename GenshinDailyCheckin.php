@@ -53,7 +53,7 @@ echo "Check-in status: ${signInMessage}\n";
 
 $items = getCheckinItems();
 if ($items['data'] && isset($items['data']['awards'])) {
-    $totalSignDayIndex = $signIn['data']['total_sign_day'];
+    $totalSignDayIndex = $info['data']['total_sign_day'];
     if (isset($items['data']['awards'][$totalSignDayIndex])) {
         $todayItem = $items['data']['awards'][$totalSignDayIndex];
         $itemObtained = $todayItem['cnt'] . ' ' . $todayItem['name'];
