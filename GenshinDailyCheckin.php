@@ -13,9 +13,9 @@ $query = http_build_query([
     'lang' => 'en-us',
     'act_id' => 'e202102251931481',
 ]);
-define('URL_MONTH_CHECKIN_ITEMS', CHECKIN_API_URL . "/home?${query}");
-define('URL_CURRENT_SIGNIN_INFO', CHECKIN_API_URL . "/info?${query}");
-define('URL_SIGNIN', CHECKIN_API_URL . "/sign?${query}");
+define('URL_MONTH_CHECKIN_ITEMS', CHECKIN_API_URL . "/home?{$query}");
+define('URL_CURRENT_SIGNIN_INFO', CHECKIN_API_URL . "/info?{$query}");
+define('URL_SIGNIN', CHECKIN_API_URL . "/sign?{$query}");
 
 define('CHECKIN_HEADER', [
     'Accept: application/json, text/plain, */*',
@@ -33,9 +33,9 @@ if ($info['data']) {
     $totalCheckin = $info['data']['total_sign_day'];
     $today = $info['data']['today'];
     $status = $info['data']['is_sign'] ? 'Already' : 'Not yet';
-    echo "Total check-in: ${totalCheckin} day\n";
-    echo "Today date: ${today}\n";
-    echo "Status: ${status}\n";
+    echo "Total check-in: {$totalCheckin} day\n";
+    echo "Today date: {$today}\n";
+    echo "Status: {$status}\n";
 
     if ($info['data']['is_sign']) {
         echo "Nothing to do\n";
@@ -43,13 +43,13 @@ if ($info['data']) {
     }
 } else {
     $message = $info['message'];
-    echo "Status: ${message}\n";
+    echo "Status: {$message}\n";
     exit(1);
 }
 
 $signIn = sendSignIn();
 $signInMessage = $signIn['message'];
-echo "Check-in status: ${signInMessage}\n";
+echo "Check-in status: {$signInMessage}\n";
 
 $items = getCheckinItems();
 if ($items['data'] && isset($items['data']['awards'])) {
@@ -58,7 +58,7 @@ if ($items['data'] && isset($items['data']['awards'])) {
         $todayItem = $items['data']['awards'][$totalSignDayIndex];
         $itemObtained = $todayItem['cnt'] . ' ' . $todayItem['name'];
         echo "===========================\n";
-        echo "Item obtained: ${itemObtained}\n";
+        echo "Item obtained: {$itemObtained}\n";
         echo "===========================\n";
     }
 }
