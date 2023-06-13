@@ -8,7 +8,7 @@ if (!isset($argv[1])) {
 }
 define('HOYOLAB_COOKIE', $argv[1]);
 
-define('CHECKIN_API_URL', 'https://hk4e-api-os.mihoyo.com/event/sol');
+define('CHECKIN_API_URL', 'https://sg-hk4e-api.hoyolab.com/event/sol');
 $query = http_build_query([
     'lang' => 'en-us',
     'act_id' => 'e202102251931481',
@@ -19,10 +19,10 @@ define('URL_SIGNIN', CHECKIN_API_URL . "/sign?${query}");
 
 define('CHECKIN_HEADER', [
     'Accept: application/json, text/plain, */*',
-    'Accept-Language: en-US;q=0.8,en;q=0.7',
+    'Accept-Language: en-US;q=0.9,en;q=0.8',
     'Connection: keep-alive',
-    'Origin: https://webstatic-sea.mihoyo.com',
-    "Referer: https://webstatic-sea.mihoyo.com/ys/event/signin-sea/index.html?${query}",
+    'Origin: https://act.hoyolab.com',
+    'Referer: https://act.hoyolab.com/',
     'Cache-Control: max-age=0',
 ]);
 define('HTTP_AGENT', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36');
